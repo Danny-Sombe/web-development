@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamburger Menu Demo</title>
+  <style>
+    /* ============ BASIC STYLES ============ */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+    }
+
+    header {
+      background: #1459a8;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    /* ===== LOGO ===== */
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* ===== HAMBURGER ICON ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px;
+      transition: 0.3s;
+    }
+
+    /* ===== MOBILE VIEW ===== */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #1459a8;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        display: none; /* Hidden by default */
+      }
+
+      .nav-links.active {
+        display: flex; /* Show when active */
+      }
+
+      /* Animate the hamburger into an X */
+      .hamburger.toggle div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .hamburger.toggle div:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.toggle div:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">SONNLogix</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </header>
+
+  <script>
+    // Select the hamburger menu and navigation links
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    // Toggle navigation when hamburger is clicked
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('toggle');
+    });
+
+    // Close menu when a link is clicked (for better UX)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('toggle');
+      });
+    });
+  </script>
+
+</body>
+</html>

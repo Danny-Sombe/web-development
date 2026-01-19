@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"> </html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Server Application</h1>
+    <button id="btn" onclick="FetchData()">FetchData</button>
+  <p id="demo">demo</p>
+  <p id="demo1">demo1</p>
+<script>
+    function FetchData() {
+
+        fetch('http://localhost:3000/').then(response => {
+            return response.json();
+
+        }).then(data => {
+            console.log(data);
+            document.getElementById("demo").innerHTML = data.name;
+            document.getElementById("demo1").innerHTML = data.status;
+ 
+        })
+    }
+</script>
+
+</body>
+</html>

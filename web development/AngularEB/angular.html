@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angular Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<body ng-app="myApp" ng-controller="todoCtrl">
+
+
+    <h1>My Todo List</h1>
+    <form ng-submit="todoadd()">
+     <input type="text" ng-model="todoinput" size="30" placeholder="Add new todo">
+     <button type="submit" value="Add New">
+    </form>
+
+    <br>
+
+    <div ng-repeat="x in todoList">
+        <input aria-label="myinput" type="checkbox" ng-model="x.done"> 
+        <span ng-bind="x.todolist"></span>
+    </div>
+
+    <p><button ng-click="removeCompleted()">Remove Completed</button></p>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('todoCtrl', function($scope) {
+            $scope.todoList = [{todotext:'Clean House', done:false}];
+
+            $scope.todoadd = function() {
+             $scope.todoList.push({todotext:$scope.todoinput, done:false});
+             $scope.todoinput = "";  
+    
+            };
+
+          $scope.remove = function() {
+                var oldList = $scope.todoList;
+                $scope.todoList = [];
+                angular.forEach(oldList, function(x) {
+                    if (!x.done) $scope.todoList.push(x);
+                });
+            };
+        });
+    </script>
+
+</body>
+</html>

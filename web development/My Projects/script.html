@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SD Plexus SONNLogix</title>
+    <ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+
+<p>Note: We use href="#" for links. In a real website this would be URLs.</p>
+
+    <style>
+        /* ======= SD Plexus SONNLogix - brand styles ======= */
+
+        /* Color system */
+        :root {
+            --bg: #0E4C5C;       /* deep teal background */
+            --white: #ffffff;
+            --blue: #171aa5;     /* "Plexus/SONN" blue */
+            --grey: rgba(66, 55, 55, 0.897);     /* "Logix" light grey */
+            --shadow: 0 8px 18px rgb(95, 196, 214);
+        }
+
+        /* Page canvas */
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--white);
+            display: flex;
+            place-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Layout wrapper for the brand block */
+        .brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 20px 40px;
+        }
+
+        /* ---- Monogram "SD" ---- */
+        .brand-mark {
+            position: relative;
+            width: clamp(70px, 12vw, 120px);
+            height: clamp(52px, 9vw, 90px);
+            display: grid;
+            place-items: center;
+            filter: drop-shadow(var(--shadow));
+        }
+
+        /* Build the SD with two layers so "D" cuts into "S" */
+        .brand-mark::before,
+        .brand-mark::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+        }
+
+        /* Big white "S" block */
+        .brand-mark::before {
+            background: radial-gradient(
+                120% 140% at 20% 60%,
+                rgba(165, 83, 83, 0.95),
+                rgba(44, 34, 34, 0.88) 60%,
+                rgba(167, 140, 140, 0.82) 100%
+            );
+        }
+
+        /* Inner notch to form the D-counter */
+        .brand-mark::after {
+            width: 44%;
+            right: 10%;
+            background: var(--bg);
+            border-radius: 12px;
+            box-shadow: inset 0 0 0 18px var(--white); /* the "D" stroke */
+        }
+
+        /* Optional "SD" letters overlay for accessibility/SEO (hidden visually) */
+        .brand-mark .sr {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ---- Wordmark ---- */
+        .wordmark {
+            line-height: 1;
+            filter: drop-shadow(var(--shadow));
+        }
+
+        .wordmark .plexus {
+            color: var(--blue);
+            font-weight: 800;
+            letter-spacing: 0.2px;
+            font-size: clamp(28px, 5vw, 64px);
+        }
+
+        .wordmark .row2 {
+            display: flex;
+            align-items: baseline;
+            gap: 0.25em;
+            margin-top: 0.4em;
+        }
+
+        .wordmark .sonn {
+            color: var(--blue);
+            font-weight: 900;
+            letter-spacing: 0.6px;
+            font-size: clamp(28px, 5vw, 64px);
+        }
+
+        .wordmark .logix {
+            color: var(--grey);
+            font-weight: 800;
+            font-size: clamp(26px, 4.7vw, 60px);
+            letter-spacing: 2px;
+        }
+
+        /* ---- Tagline ---- */
+        .tagline {
+            margin-top: clamp(14px, 2.2vw, 18px);
+            color: rgba(189, 102, 114, 0.904);
+            font-weight: 500;
+            font-size: clamp(14px, 2.2vw, 22px);
+            letter-spacing: 2px;
+        }
+
+        /* ---- Compact stack on small screens ---- */
+        @media (max-width: 580px) {
+            .brand-wrap {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="brand-wrap">
+        <div class="brand-mark">
+            <span class="sr">SD</span>
+        </div>
+        <div class="wordmark">
+            <div class="plexus">Plexus</div>
+            <div class="row2">
+                <div class="sonn">SONN</div>
+                <div class="logix">Logix</div>
+            </div>
+            <div class="tagline">Empowering Movement with Intelligence</div>
+        </div>
+    </div>
+</body>
+</html>

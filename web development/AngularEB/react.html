@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+    <title>React To Do List</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!--React -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.min.js"></script>
+
+    <!--Babel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="root"></div>
+<script type="text/babel">
+     var Todolist = React.createClass({
+        render: function() {
+            var createItem = function(itemText, index) {
+                return <li key={index}>{itemText}</li>;
+            };
+            return <ul>{this.props.items.map(createItem)}</ul>;
+        }
+    });
+
+    var TodoApp = React.createClass({
+        getInitialState: function() {
+            return { items: [], text: '' };
+        },
+        onChange: function(e) {
+            this.setState({ text: e.target.value });
+        },
+        handleSubmit: function(e) {
+            e.preventDefault();
+            if (!this.state.text.trim()) return;
+            var nextItems = this.state.items.concat([this.state.text]);
+            this.setState({ items: nextItems, text: '' });
+        },
+        render: function() {
+            return (
+                <div>
+                    <h3>My Todo List</h3>
+                    <Todolist items={this.state.items} />
+                    <form onSubmit={this.handleSubmit}>
+                        <input onChange={this.onChange} value={this.state.text} placeholder="Enter task..." />
+                        <button>Add #{this.state.items.length + 1}</button>
+                    </form>
+                </div>
+            );
+        }
+    });
+
+    ReactDOM.render(<TodoApp />, document.getElementById('root'));
+</script>
+
+</body>
+</html>

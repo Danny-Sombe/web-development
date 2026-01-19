@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plexus SONNLogix | LIVE TRUCK TRACKER</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Plexus SONNLogix | LIVE TRUCK TRACKER</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <button id="login-btn">Login</button>
+            <button id="logout-btn">Logout</button>
+        </nav>
+    </header>
+    <main>
+        <section class="dashboard">
+            <h2>Truck Tracking Dashboard</h2>
+            <div id="map"></div> <!-- Placeholder for map -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Truck ID</th>
+                        <th>Driver Name</th>
+                        <th>Current Location</th>
+                        <th>Status</th>
+                        <th>Last Updated</th>
+                    </tr>
+                </thead>
+                <tbody id="trucks-table"></tbody> <!-- JavaScript will populate this -->
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Plexus Sonnlogix. All rights reserved.</p>
+    </footer>
+    <script src="app.js"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+
+</body>
+</html>
